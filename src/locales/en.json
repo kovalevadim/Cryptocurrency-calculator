@@ -1,0 +1,22 @@
+{
+  "message": "hello i18n!!",
+  "common": {
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "register": "Register",
+    "save": "Save",
+    "close": "Close",
+    "editing": "Editing",
+    "saveChanges": "Save changes",
+    "changeLanguage": "Change language",
+    "continue": "Continue",
+    "settings": "Settings",
+    "edit": "Edit",
+    "remove": "Remove",
+    "color": "Color",
+    "tags": "Tags",
+    "doNotSpecify": "Do not specify"
+  }
+}

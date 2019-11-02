@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $bg-dark;
+}
+a {
+  text-decoration: none;
+  color: $primary;
+}
+input {
+  padding: .5rem 1rem;
+}
+select {
+  border: none;
+  background: rgba(0,0,0,0);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family;
+  margin-top: 0;
+  margin-bottom: .5rem;
+}

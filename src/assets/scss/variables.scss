@@ -1,0 +1,36 @@
+$primary: #92cbc5;
+$secondary: #9fa8da;
+$danger: #ff6e6e;
+$black: #000000;
+$white: #ffffff;
+
+$bg-darker: #212121;
+$bg-dark: #303030;
+
+$primary-text: $white;
+$secondary-text: rgba($white, 0.7);
+$disabled-text: rgba($white, .3);
+
+$primary-opacity: 1;
+$secondary-opacity: .7;
+$disabled-opacity: .3;
+$none-opacity: 1;
+
+$font-family: 'Roboto',
+sans-serif;
+
+// FONT-WEIGHT
+$fw-thin: 100;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+$fw-black: 900;
+
+// TRANSITION
+$transition-duration: 0.3s;
+$transition-timing-function: ease-in-out;
+
+// BORDER RADIUS
+$sm-bd-rs: .125rem;
+$md-bd-rs: .5rem;
