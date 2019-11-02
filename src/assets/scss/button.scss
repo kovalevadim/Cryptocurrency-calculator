@@ -1,0 +1,67 @@
+.primary-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.25rem;
+  border-radius: $sm-bd-rs;
+  font-family: $font-family;
+  // font-size: $size-button;
+  font-weight: $fw-medium;
+  color: $black;
+  background: $primary;
+}
+
+a.primary-button {
+  color: $black;
+}
+
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: $black;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.text-button {
+  display: flex;
+  padding: .5rem 0.75rem;
+  border-radius: $sm-bd-rs;
+  font-family: $font-family;
+  // font-size: $size-body;
+  font-weight: $fw-medium;
+  color: $primary;
+  background: transparent;
+  word-wrap: normal;
+
+  &:focus {
+    outline: none;
+  }
+  &.danger {
+    color: rgba($danger, $secondary-opacity)
+  }
+}
+
+a.text-button {
+  color: $primary;
+}
+
+.primary-button[disabled],
+.icon-button[disabled],
+.text-button[disabled] {
+  opacity: .5;
+}
+
+.not-working-functionality {
+  opacity: .2 !important;
+}

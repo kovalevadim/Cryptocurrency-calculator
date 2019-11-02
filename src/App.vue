@@ -1,16 +1,15 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Navbar />
     <router-view/>
+    <Footer />
   </div>
 </template>
 
 <style lang="scss">
-@import "@/assets/scss/variables.scss";
 @import "@/assets/scss/typography.scss";
 @import "@/assets/scss/base.scss";
+@import "@/assets/scss/button.scss";
 @import "@/assets/scss/layout.scss";
+// @import "@/assets/scss/form.scss";
 </style>

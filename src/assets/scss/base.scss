@@ -13,21 +13,17 @@ body {
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $bg-dark;
+  background-color: rgba($white, .1);
 }
 a {
   text-decoration: none;
   color: $primary;
 }
-input {
-  padding: .5rem 1rem;
-}
 select {
-  border: none;
   background: rgba(0,0,0,0);
 }
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family;
-  margin-top: 0;
-  margin-bottom: .5rem;
-}
+// h1, h2, h3, h4, h5, h6 {
+//   font-family: $font-family;
+//   margin-top: 0;
+//   margin-bottom: .5rem;
+// }

@@ -1,74 +1,65 @@
 #app {
+  display: flex;
   flex-direction: column;
   height: 100%;
   font-family: $font-family;
   color: $primary-text;
   background-color: $bg-dark;
 
-  .view {
+  .container {
     display: flex;
     flex-direction: column;
+    width: 46rem;
+    max-width: 100% !important;
     height: 100%;
+    padding: 1rem;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      width: 46rem;
-      max-width: 100% !important;
-      height: 100%;
-      padding: 1rem;
-      margin-inline-start: auto;
-      margin-inline-end: auto;
-
-      @media only screen and (max-width: 767px) {
-        width: 100%;
-      }
-
-      @media only screen and (min-width: 768px) and (max-width: 991px) {
-        width: 32.5rem;
-      }
-
-      @media only screen and (min-width: 992px) and (max-width: 1199px) {
-        width: 32.5rem;
-      }
-
-      @media only screen and (min-width: 1200px) {
-        width: 32.5rem;
-      }
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 0 0 3.5rem;
+    @media only screen and (max-width: 767px) {
       width: 100%;
-      height: 3.5rem;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
-      background: $bg-darker;
-
-      .logo {
-        // font-size: $size-title;
-        font-weight: 400;
-        letter-spacing: .5px;
-      }
     }
 
-    .main {
-      flex: 1 1;
-      overflow: hidden;
-      overflow-y: auto;
-
-      .center-box {
-        margin: auto;
-      }
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+      width: 32.5rem;
     }
 
-    .footer {
-      flex: 0 0;
-      width: 100%;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
-      background: $bg-darker;
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+      width: 32.5rem;
     }
+
+    @media only screen and (min-width: 1200px) {
+      width: 32.5rem;
+    }
+  }
+
+  .navbar {
+    width: 100%;
+    height: 3.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    background: $bg-darker;
+
+    .logo {
+      // font-size: $size-title;
+      font-weight: 400;
+      letter-spacing: .5px;
+    }
+  }
+
+  .main {
+    flex: 1 1;
+    overflow: hidden;
+    overflow-y: auto;
+
+    .center-box {
+      margin: auto;
+    }
+  }
+
+  .footer {
+    flex: 0 0;
+    width: 100%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    background: $bg-darker;
   }
 }

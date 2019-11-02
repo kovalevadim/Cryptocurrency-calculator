@@ -23,7 +23,7 @@ input, textarea {
   padding: .5rem 1rem;
   border: none;
   border-bottom: 2px solid $primary;
-  font-size: $size-caption;
+  // font-size: $size-caption;
   color: $primary-text;
   background-color: $bg-dark;
   cursor: text;
@@ -31,53 +31,4 @@ input, textarea {
 input:focus, textarea:focus {
   outline: none;
   border-color: $primary-text;
-}
-.form {
-  margin-top: auto;
-  margin-bottom: auto;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  padding-bottom: 3.5rem;
-  h1, h2 {
-    text-align: center;
-    font-weight: $fw-light;
-  }
-  h1 {
-    font-size: $size-headline;
-  }
-  h2 {
-    margin-top: 1rem;
-    font-size: $size-body;
-    color: $secondary-text;
-  }
-  fieldset {
-    margin: 0;
-    margin-top: 2rem;
-    padding: 0;
-    border: none;
-    legend {
-      font-size: $size-label;
-      font-weight: $fw-regular;
-      color: $secondary-text;
-    }
-    input {
-      margin-top: .25rem;
-    }
-  }
-  button {
-    &.primary-button {
-      margin-top: 2rem;
-    }
-    width: 100%;
-  }
-  p {
-    margin-top: 2rem;
-    font-size: $size-caption;
-  }
-  .change-language {
-    margin-top: 1.5rem;
-  }
-  p.secondary-text, a.secondary-text {
-    color: $secondary-text;
-  }
 }
