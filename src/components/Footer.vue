@@ -1,8 +1,14 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <ChangeLocale />
-      <div class="name">{{ $store.getters['user/getName'] }}</div>
+      <div class="row">
+        <div class="col">
+          <ChangeLocale />
+        </div>
+        <div class="col">
+          <div class="name">{{ $store.getters['user/getName'] }}</div>
+        </div>
+      </div>
     </div>
   </footer>
 </template>
@@ -25,5 +31,10 @@ export default {
 </script>
 
 <style lang="scss">
-
+.footer {
+  .row {
+    display: flex;
+    justify-content: space-around;
+  }
+}
 </style>

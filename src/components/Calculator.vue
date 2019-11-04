@@ -42,6 +42,8 @@ export default {
     display: flex;
   }
   .equally {
+    display: flex;
+    align-items: center;
     padding: 0 1rem;
   }
   input, select {
