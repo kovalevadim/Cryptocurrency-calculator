@@ -31,8 +31,7 @@ export default {
     changeLang(l) {
       localStorage.locale = l
       var html = document.documentElement
-      console.log(html)
-      document.documentElement.lang = l
+      html.lang = l
     }
   }
 }
@@ -43,6 +42,7 @@ export default {
 
 select.change-locale {
   // margin-top: 2rem;
+  padding: .25rem 0.5rem;
   font-weight: 300;
   color: $secondary-text;
   option {
