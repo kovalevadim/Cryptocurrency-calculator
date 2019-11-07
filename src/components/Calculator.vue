@@ -3,7 +3,7 @@
     <div class="select-currency">
       <input type="tel" class="value">
       <select name="" id="" class="currency-list">
-        <option v-for="currency in assets" :key="currency.symbol" :value="currency.symbol">{{ currency.symbol }}</option>
+        <option v-for="currency in $store.getters['assets/gatAssets']" :key="currency.symbol" :value="currency.symbol">{{ currency.symbol }}</option>
       </select>
     </div>
     <div class="equally">=</div>
@@ -18,7 +18,7 @@
 
 <script>
 // import io from 'socket.io-client';
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   name: 'Calculator',
@@ -32,31 +32,9 @@ export default {
       assets: [],
     }
   },
-  created() {
-    this.getAssets()
-    // this.getWss()
-  },
   methods: {
-    getAssets() {
-      this.isGetting = true
-      axios.get(`${this.apiUrl}assets?ids=${this.assetsList}`)
-        .then(res => {
-          let data = res.data.data
-          let assets = []
-          data.forEach(element => {
-            let currency = {
-              id: element.id,
-              symbol: element.symbol,
-              priceUsd: element.priceUsd
-            }
-            assets.push(currency)
-          });
-          this.assets = assets
-        })
-      this.isGetting = false
-    },
     getWss() {
-      const tradeWs = new WebSocket(`${this.wsUrl}prices?assets=${this.assetsList}`)
+      const tradeWs = new WebSocket(`${this.wsUrl}prices?assets=${this.$store.getters['assets/assetsList']}`)
 
       tradeWs.onmessage = (msg) => {
         console.log(msg.data)
