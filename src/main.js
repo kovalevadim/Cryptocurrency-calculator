@@ -4,7 +4,7 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import i18n from './i18n'
-import VueSocketIO from 'vue-socket.io'
+// import VueSocketIO from 'vue-socket.io'
 
 //My components import
 import Navbar from './components/Navbar'
@@ -16,18 +16,18 @@ Vue.config.productionTip = false
 Vue.component('Navbar', Navbar)
 Vue.component('Footer', Footer)
 
-Vue.use(new VueSocketIO({
-  debug: true,
-  connection: 'http://ws.kraken.com',
-  vuex: {
-    store,
-    actionPrefix: "SOCKET_",
-    mutationPrefix: "SOCKET_",
-    // options: {
-    //   useConnectionNamespace: true
-    // }
-  }
-}));
+// Vue.use(new VueSocketIO({
+//   debug: true,
+//   connection: 'http://ws.kraken.com',
+//   vuex: {
+//     store,
+//     actionPrefix: "SOCKET_",
+//     mutationPrefix: "SOCKET_",
+//     // options: {
+//     //   useConnectionNamespace: true
+//     // }
+//   }
+// }));
 
 new Vue({
   router,
