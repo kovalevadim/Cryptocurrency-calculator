@@ -1,5 +1,8 @@
 # cryptocurrency-calculator
 
+## DEMO:
+[Cryptocurrency calculator](https://cryptocurrency-calculator-vue.web.app)
+
 ## Project setup
 ```
 npm install
