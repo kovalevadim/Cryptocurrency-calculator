@@ -7,18 +7,28 @@ const assets = {
     wsUrl: 'wss://ws.coincap.io/',
     assetsList: 'bitcoin,ethereum,monero,litecoin',
     assets: [],
+    selectedAsset: {},
+    isDownloadAssets: false
   },
   getters: {
-    gatAssets: state => state.assets
+    getStatusDownload: state => state.isDownloadAssets,
+    getAssets: state => state.assets,
+    getSelectedAsset: state => state.selectedAsset
   },
   mutations: {
+    changeStatusDownloadAssets: (state, status) => {
+      state.isDownloadAssets = status
+    },
     changeAssets: (state, assetsData) => {
       state.assets = assetsData
     },
     changeAssetsPrice: (state, newPrice) => {
-      // console.log(newPrice)
       let requiredAsset = state.assets.find(assets => assets.id == newPrice.id)
-      requiredAsset.priceUsd = newPrice.priceUsd
+      if (requiredAsset) requiredAsset.priceUsd = newPrice.priceUsd
+    },
+    changeSelectedAsset: (state, newSelectedAsset) => {
+      //! newSelectedAsset == {id: id, symbol: symbol}
+      state.selectedAsset = newSelectedAsset
     }
   },
   actions: {
@@ -35,17 +45,20 @@ const assets = {
             }
             assets.push(currency)
           });
-          console.log(assets)
           commit('changeAssets', assets)
+          commit('changeSelectedAsset', {
+            id: assets[0].id, symbol: assets[0].symbol
+          })
+          commit('changeStatusDownloadAssets', true)
         })
     },
     updateAssets: ({commit, state}) => {
       const assetsWs = new WebSocket(`${state.wsUrl}prices?assets=${state.assetsList}`)
       assetsWs.onmessage = (msg) => {
-        let assets = Array.of(JSON.parse(msg.data))
-        for (let index in assets[0]) {
+        let assets = JSON.parse(msg.data)
+        for (let index in assets) {
           let id = index
-          let priceUsd = assets[0][index]
+          let priceUsd = assets[index]
           commit('changeAssetsPrice', {id, priceUsd})
         }
       }

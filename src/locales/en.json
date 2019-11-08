@@ -18,5 +18,9 @@
     "color": "Color",
     "tags": "Tags",
     "doNotSpecify": "Do not specify"
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About"
   }
 }

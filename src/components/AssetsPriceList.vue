@@ -1,7 +1,7 @@
 <template>
   <div class="assets-price-list">
     <div
-      v-for="assets in $store.getters['assets/gatAssets']"
+      v-for="assets in $store.getters['assets/getAssets']"
       :key="assets.symbol"
       class="item"
     >
