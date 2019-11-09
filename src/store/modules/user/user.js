@@ -1,7 +1,7 @@
 const user = {
   namespaced: true,
   state: {
-    name: 'Vadym'
+    name: 'kovalevadim'
   },
   getters: {
     getName: state => state.name

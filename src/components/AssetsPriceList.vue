@@ -1,16 +1,16 @@
 <template>
   <div class="assets-price-list">
     <div
-      v-for="assets in $store.getters['assets/getAssets']"
-      :key="assets.symbol"
+      v-for="asset in $store.getters['assets/getAssets']"
+      :key="asset.symbol"
       class="item"
     >
       <div class="symbol">
-        {{ assets.symbol }}
+        {{ asset.symbol }}
       </div>
-      <div class="price">
-        ${{ assets.priceUsd | fixesPrice }}
-      </div> 
+      <div class="price" :class="{up: asset.priceChangeStatus === 'up', down: asset.priceChangeStatus === 'down'}">
+        ${{ asset.priceUsd | fixesPrice }}
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
   },
   filters: {
     fixesPrice: value => {
-      return Number(value).toFixed(4)
+      return value.toFixed(4)
     }
   }
 }
@@ -37,6 +37,7 @@ export default {
 <style lang="scss">
 .assets-price-list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   font-size: 0.875rem;
   color: rgba($primary-text, $secondary-opacity);
@@ -45,6 +46,15 @@ export default {
     text-align: center;
     .symbol {
       font-size: 1.25rem;
+      font-weight: $fw-light;
+    }
+    .price {
+      &.up {
+        color: rgba($primary, $secondary-opacity);
+      }
+      &.down {
+        color: rgba($danger, $secondary-opacity);
+      }
     }
   }
 }

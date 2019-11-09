@@ -5,7 +5,7 @@ const assets = {
   state: {
     apiUrl: 'https://api.coincap.io/v2/',
     wsUrl: 'wss://ws.coincap.io/',
-    assetsList: 'bitcoin,ethereum,monero,litecoin',
+    assetsList: 'bitcoin,ethereum,zcash,monero,litecoin',
     assets: [],
     selectedAsset: {},
     isDownloadAssets: false
@@ -22,9 +22,15 @@ const assets = {
     changeAssets: (state, assetsData) => {
       state.assets = assetsData
     },
-    changeAssetsPrice: (state, newPrice) => {
-      let requiredAsset = state.assets.find(assets => assets.id == newPrice.id)
-      if (requiredAsset) requiredAsset.priceUsd = newPrice.priceUsd
+    changeAssetsPrice: (state, newData) => {
+      let requiredAsset = state.assets.find(assets => assets.id == newData.id)
+      let self = newData
+      if (requiredAsset) {
+        let currentPrice = requiredAsset.priceUsd
+        let newPrice = Number(self.priceUsd)
+        newPrice > currentPrice ? requiredAsset.priceChangeStatus = 'up' : requiredAsset.priceChangeStatus = 'down'
+        requiredAsset.priceUsd = newPrice
+      }
     },
     changeSelectedAsset: (state, newSelectedAsset) => {
       //! newSelectedAsset == {id: id, symbol: symbol}
@@ -41,7 +47,8 @@ const assets = {
             let currency = {
               id: element.id,
               symbol: element.symbol,
-              priceUsd: element.priceUsd
+              priceUsd: Number(element.priceUsd),
+              priceChangeStatus: ''
             }
             assets.push(currency)
           });

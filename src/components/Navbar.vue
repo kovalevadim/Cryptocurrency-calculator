@@ -42,6 +42,9 @@ export default {
 
 <style lang="scss">
 .navbar {
+  @media only screen and (max-width: 767px) {
+    font-size: 0.875rem;
+  }
   .container {
     .row {
       display: flex;
@@ -53,6 +56,9 @@ export default {
           // padding-left: 2rem;
           text-align: left;
           white-space: nowrap;
+          @media only screen and (max-width: 767px) {
+            white-space: normal;
+          }
         }
       }
       .navbar-nav {
@@ -61,6 +67,9 @@ export default {
         padding: 0;
         list-style: none;
         .nav-item {
+          display: flex;
+          align-items: center;
+          height: 100%;
           margin: 0 .25rem;
         }
       }

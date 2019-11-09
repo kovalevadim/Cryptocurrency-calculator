@@ -6,7 +6,7 @@
           <ChangeLocale />
         </div>
         <div class="col">
-          <div class="name">{{ $store.getters['user/getName'] }}</div>
+          <div class="name">&copy; {{ $store.getters['user/getName'] }} {{ currentYear }}</div>
         </div>
       </div>
     </div>
@@ -21,12 +21,11 @@ export default {
   components: {
     ChangeLocale
   },
-  // data() {
-  //   return {
-  //     activeSidebar: false,
-  //     isShowDropdownMenu: false
-  //   }
-  // }
+  data() {
+    return {
+      currentYear: new Date().getFullYear()
+    }
+  }
 }
 </script>
 
@@ -35,6 +34,10 @@ export default {
   .row {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+  }
+  .name {
+    color: rgba($primary-text, $secondary-opacity);
   }
 }
 </style>

@@ -27,7 +27,7 @@
     <div class="select-currency">
       <div class="result">{{ result.toFixed(2) }}</div>
       <div class="selected-assets">
-        <div class="header">USD</div>
+        USD
       </div>
     </div>
   </div>
@@ -74,41 +74,72 @@ export default {
 .calculator {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   margin: auto;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  @media only screen and (max-width: 767px) {
+    font-size: 1rem;
+  }
   .select-currency {
     display: flex;
-    width: 44%;
-  }
-  .value {
-    width: 60%;
-    padding: .75rem 1rem;
+    flex: 1 1;
+    padding: .5rem .25rem;
     border: 1px solid $primary;
+    border-radius: $bd-rs;
+    .value, .result {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60%;
+      padding: 0;
+      border: none;
+      border-right: 1px solid $primary;
+      line-height: 1.2;
+      color: $primary-text;
+      background-color: transparent;
+    }
+    .value {
+      text-align: center;
+      font-size: 1.5rem;
+      @media only screen and (max-width: 767px) {
+        font-size: 1rem;
+      }
+    }
+    .selected-assets {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 40%;
+      font-weight: $fw-light;
+      color: $primary-text;
+      @media only screen and (max-width: 767px) {
+        font-size: .875rem;
+      }
+    }
+  }
+  .equally {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
     font-size: 1.5rem;
-    color: $primary-text;
-    background-color: $bg-dark;
-    border-right: none;
-    border-top-left-radius: $bd-rs;
-    border-bottom-left-radius: $bd-rs;
   }
   .selected-assets {
-    width: 40%;
-    padding: .75rem .25rem;
-    border: 1px solid $primary;
-    font-size: 1.5rem;
-    color: $primary-text;
-    background-color: $bg-dark;
-    border-top-right-radius: $bd-rs;
-    border-bottom-right-radius: $bd-rs;
     position: relative;
-    cursor: pointer;
-    user-select: none;
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-left: 0.25rem;
+      width: 100%;
+      cursor: pointer;
+      user-select: none;
       .icon {
         height: 1.5rem;
+        @media only screen and (max-width: 767px) {
+          width: 1rem;
+          height: 1rem;
+        }
         &.active {
           .svg-icon {
             transform: rotate(180deg)
@@ -116,6 +147,8 @@ export default {
         }
       }
       .svg-icon {
+        width: 100%;
+        height: 100%;
         transition: transform $transition-duration $transition-timing-function;
         .svg-icon-path {
           fill: $white
@@ -124,32 +157,15 @@ export default {
     }
     .assets-list {
       position: absolute;
-      top: 100%;
-      left: $bd-rs;
+      top: calc(100% + .5rem);
+      left: 0;
       right: $bd-rs;
       border: 1px solid $primary;
-      border-bottom-right-radius: $bd-rs;
-      border-bottom-left-radius: $bd-rs;
+      border-top: none;
       .item {
         padding: .25rem;
       }
     }
-  }
-  .equally {
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-  }
-  .result {
-    width: 60%;
-    padding: .75rem 1rem;
-    border: 1px solid $primary;
-    font-size: 1.5rem;
-    color: $primary-text;
-    background-color: $bg-dark;
-    border-right: none;
-    border-top-left-radius: $bd-rs;
-    border-bottom-left-radius: $bd-rs;
   }
   .row {
     width: 100%;
