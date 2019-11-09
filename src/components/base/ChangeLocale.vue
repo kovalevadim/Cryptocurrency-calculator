@@ -43,6 +43,7 @@ export default {
 select.change-locale {
   // margin-top: 2rem;
   padding: .25rem 0.5rem;
+  border: none;
   font-weight: 300;
   color: $secondary-text;
   option {

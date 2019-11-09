@@ -22,5 +22,17 @@
   "navbar": {
     "home": "Главная",
     "about": "О проекте"
+  },
+  "about-page": {
+    "stack": "Стек технологий",
+    "stack-list": {
+      "vue": "Vue.js + Vuex + Vue Router",
+      "api": "Для работы с API - Axios",
+      "websocket": "WebSockets - нативные средства js",
+      "i18n": "Библиотека vue-i18n",
+      "hosting": "Firebase"
+    },
+    "github": "Ссылка на мой github аккаунт",
+    "telegram": "Мой телеграмм аккаунт"
   }
 }

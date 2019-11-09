@@ -22,5 +22,17 @@
   "navbar": {
     "home": "Home",
     "about": "About"
+  },
+  "about-page": {
+    "stack": "Technology stack",
+    "stack-list": {
+      "vue": "Vue.js + Vuex + Vue Router",
+      "api": "To work with the API - Axios",
+      "websocket": "WebSockets - js native tools",
+      "i18n": "Library vue-i18n",
+      "hosting": "Firebase"
+    },
+    "github": "Link to my github account",
+    "telegram": "My telegram account"
   }
 }

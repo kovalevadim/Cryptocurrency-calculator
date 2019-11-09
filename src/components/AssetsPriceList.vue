@@ -49,6 +49,7 @@ export default {
       font-weight: $fw-light;
     }
     .price {
+      transition: color $transition-duration $transition-timing-function;
       &.up {
         color: rgba($primary, $secondary-opacity);
       }

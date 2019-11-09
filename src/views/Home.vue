@@ -1,8 +1,8 @@
 <template>
   <div class="main">
     <div class="container">
-      <AssetsPriceList />
       <Calculator/>
+      <AssetsPriceList />
     </div>
   </div>
 </template>
