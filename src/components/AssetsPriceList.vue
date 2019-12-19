@@ -1,23 +1,23 @@
 <template>
   <div class="assets-price-list">
     <div
-      v-for="asset in $store.getters['assets/getAssets']"
+      v-for="asset in assets"
       :key="asset.symbol"
+      @click="changeSelectedAsset({id: asset.id, symbol: asset.symbol})"
       class="item"
     >
       <div class="symbol">
         {{ asset.symbol }}
       </div>
       <div class="price" :class="{up: asset.priceChangeStatus === 'up', down: asset.priceChangeStatus === 'down'}">
-        ${{ asset.priceUsd | fixesPrice }}
+        ${{ asset.priceUsd.toFixed(4) }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import io from 'socket.io-client';
-// import axios from 'axios'
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'Calculator',
@@ -26,10 +26,15 @@ export default {
       isGetting: false
     }
   },
-  filters: {
-    fixesPrice: value => {
-      return value.toFixed(4)
-    }
+  computed: {
+    ...mapState('assets', [
+      'assets'
+    ])
+  },
+  methods: {
+    ...mapMutations('assets', [
+      'changeSelectedAsset'
+    ]),
   }
 }
 </script>
@@ -44,6 +49,7 @@ export default {
   .item {
     padding: 0 .5rem;
     text-align: center;
+    cursor: pointer;
     .symbol {
       font-size: 1.25rem;
       font-weight: $fw-light;

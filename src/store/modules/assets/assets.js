@@ -10,11 +10,6 @@ const assets = {
     selectedAsset: {},
     isDownloadAssets: false
   },
-  getters: {
-    getStatusDownload: state => state.isDownloadAssets,
-    getAssets: state => state.assets,
-    getSelectedAsset: state => state.selectedAsset
-  },
   mutations: {
     changeStatusDownloadAssets: (state, status) => {
       state.isDownloadAssets = status
@@ -22,18 +17,13 @@ const assets = {
     changeAssets: (state, assetsData) => {
       state.assets = assetsData
     },
-    changeAssetsPrice: (state, newData) => {
-      let requiredAsset = state.assets.find(assets => assets.id == newData.id)
-      let self = newData
+    changeAssetsPrice: (state, [newData, requiredAsset]) => {
       if (requiredAsset) {
-        let currentPrice = requiredAsset.priceUsd
-        let newPrice = Number(self.priceUsd)
-        newPrice > currentPrice ? requiredAsset.priceChangeStatus = 'up' : requiredAsset.priceChangeStatus = 'down'
-        requiredAsset.priceUsd = newPrice
+        requiredAsset.priceUsd = newData.priceUsd
+        requiredAsset.priceChangeStatus = newData.priceChangeStatus
       }
     },
     changeSelectedAsset: (state, newSelectedAsset) => {
-      //! newSelectedAsset == {id: id, symbol: symbol}
       state.selectedAsset = newSelectedAsset
     }
   },
@@ -66,7 +56,14 @@ const assets = {
         for (let index in assets) {
           let id = index
           let priceUsd = assets[index]
-          commit('changeAssetsPrice', {id, priceUsd})
+          let requiredAsset = state.assets.find(assets => assets.id == id)
+          if (requiredAsset) {
+            let currentPrice = requiredAsset.priceUsd
+            let newPrice = Number(priceUsd)
+            let priceChangeStatus = ''
+            newPrice > currentPrice ? priceChangeStatus = 'up' : priceChangeStatus = 'down'
+            commit('changeAssetsPrice', [{priceUsd: newPrice, priceChangeStatus}, requiredAsset])
+          }
         }
       }
     }

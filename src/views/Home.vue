@@ -8,7 +8,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import { mapActions } from 'vuex'
+
 import Calculator from '@/components/Calculator.vue'
 import AssetsPriceList from '@/components/AssetsPriceList.vue'
 
@@ -19,8 +20,14 @@ export default {
     AssetsPriceList
   },
   created() {
-    this.$store.dispatch('assets/getAssets')
-    this.$store.dispatch('assets/updateAssets')
+    this.getAssets()
+    this.updateAssets()
+  },
+  methods: {
+    ...mapActions('assets', [
+      'getAssets',
+      'updateAssets'
+    ])
   }
 }
 </script>

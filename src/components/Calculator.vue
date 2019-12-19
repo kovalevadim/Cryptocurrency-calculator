@@ -1,11 +1,11 @@
 <template>
   <div class="calculator">
     <div class="select-currency">
-      <input v-model="coinAmmount" type="tel" class="value">
+      <input v-model="coinAmount" type="tel" class="value">
       <div @click="isShowAssetsList = !isShowAssetsList" class="selected-assets">
         <div class="header">
           <div class="name">
-            {{ $store.getters['assets/getSelectedAsset'].symbol }}
+            {{ selectedAsset.symbol }}
           </div>
           <div class="icon" :class="{active: isShowAssetsList}">
             <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" width="24" height="24" viewBox="0 0 24 24"><path class="svg-icon-path" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg>
@@ -13,9 +13,9 @@
         </div>
         <div v-if="isShowAssetsList" class="assets-list">
           <div
-            v-for="asset in $store.getters['assets/getAssets']"
+            v-for="asset in assets"
             :key="asset.id"
-            @click="changeSelectedAssetsID({id: asset.id, symbol: asset.symbol})"
+            @click="changeSelectedAsset({id: asset.id, symbol: asset.symbol})"
             class="item"
           >
             {{ asset.symbol }}
@@ -34,25 +34,26 @@
 </template>
 
 <script>
-// import io from 'socket.io-client'
-// import axios from 'axios'
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'Calculator',
   data() {
     return {
       isShowAssetsList: false,
-      coinAmmount: 1
+      coinAmount: 1
     }
   },
   computed: {
+    ...mapState('assets', [
+      'selectedAsset',
+      'assets',
+      'isDownloadAssets'
+    ]),
     result: function() {
-      let status = this.$store.getters['assets/getStatusDownload']
-      if (status) {
-        let selectedAsset = this.$store.getters['assets/getSelectedAsset']
-        let assets = this.$store.getters['assets/getAssets']
-        let priceSelectedAsset = assets.find(assets => assets.id == selectedAsset.id).priceUsd
-        let result = this.coinAmmount * priceSelectedAsset
+      if (this.isDownloadAssets) {
+        let priceSelectedAsset = this.assets.find(assets => assets.id == this.selectedAsset.id).priceUsd
+        let result = this.coinAmount * priceSelectedAsset
         return result
       } else {
         return 0
@@ -60,9 +61,9 @@ export default {
     }
   },
   methods: {
-    changeSelectedAssetsID(value) {
-      this.$store.commit('assets/changeSelectedAsset', value)
-    },
+    ...mapMutations('assets', [
+      'changeSelectedAsset'
+    ]),
     changeTrigger(functionName) {
       this.$emit(functionName)
     }
@@ -164,6 +165,7 @@ export default {
       border-top: none;
       .item {
         padding: .25rem;
+        cursor: pointer;
       }
     }
   }
